@@ -5,36 +5,39 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
-const Resume: React.FC = () => {
-  const projects = [
-    { id: 1, name: 'Project 1', description: 'Short description 1' },
-    { id: 2, name: 'Project 2', description: 'Short description 2' },
-    { id: 3, name: 'Project 3', description: 'Short description 3' },
+type ResumeProps = {
+  limit?: number; // how many accordion items to show
+};
+
+const Resume: React.FC<ResumeProps> = ({ limit }) => {
+  const jobs = [
+    { id: 1, title: "Latest Job", description: "Job description..." },
+    { id: 2, title: "Previous Job", description: "Job description..." },
+    { id: 3, title: "Older Job", description: "Job description..." },
+    { id: 4, title: "Latest Job", description: "Job description..." },
+    { id: 5, title: "Previous Job", description: "Job description..." },
+    { id: 6, title: "Older Job", description: "Job description..." }
   ];
 
+  const shownJobs = limit ? jobs.slice(0, limit) : jobs;
+
   return (
-      <Card>
-        <CardHeader>
-          <CardTitle>Resume</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Accordion type="single" collapsible>
-            <AccordionItem value="item-1">
-              <AccordionTrigger>Latest Job</AccordionTrigger>
-              <AccordionContent>
-                Job description...
-              </AccordionContent>
+    <Card>
+      <CardHeader>
+        <CardTitle>Resume</CardTitle>
+      </CardHeader>
+
+      <CardContent>
+        <Accordion type="single" collapsible>
+          {shownJobs.map((job) => (
+            <AccordionItem key={job.id} value={`item-${job.id}`}>
+              <AccordionTrigger>{job.title}</AccordionTrigger>
+              <AccordionContent>{job.description}</AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-2">
-              <AccordionTrigger>Previous Job</AccordionTrigger>
-              <AccordionContent>
-                Job description...
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-          <Button className="mt-4">View Full Resume</Button>
-        </CardContent>
-      </Card>
+          ))}
+        </Accordion>
+      </CardContent>
+    </Card>
   );
 };
 

@@ -22,20 +22,13 @@ const HomePage: React.FC = () => {
       <Card>
         <CardContent className="pt-6">
           <div className="flex items-center space-x-6">
-            <Image src="/profile.jpeg" alt="profile image" width={100} height={100} className="rounded-full" />
-            <div>
-              <CardTitle className="text-2xl mb-2">Your Name</CardTitle>
-              <p>I build pixel-perfect, engaging, and accessible digital experiences.</p>
-            </div>
+              <CardTitle className="text-2xl mb-2">me 👉</CardTitle>
+              <p>I solve problems, write things, and talk to people. I like people who do what they like and treat people well.</p>
           </div>
-          <form className="mt-4">
-            <Input type="text" placeholder="Get in touch" />
-            <Button type="submit" className="mt-2">Send</Button>
-          </form>
         </CardContent>
       </Card>
 
-      <Resume />
+      <Resume limit={3} />
 
       {/* Projects Section */}
       <Card>
@@ -63,7 +56,7 @@ const HomePage: React.FC = () => {
       </Card>
 
       {/* Floating Mail Icon */}
-      <Button variant="outline" size="icon" className="fixed bottom-4 right-4 rounded-full">
+      <Button variant="outline" size="icon" className="fixed bottom-8 right-8 rounded-full">
         <Link href="mailto:abishektr2+portfolio@gmail.com">✉️</Link>
       </Button>
     </div>
